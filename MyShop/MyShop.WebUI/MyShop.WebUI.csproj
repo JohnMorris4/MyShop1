@@ -202,6 +202,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductCategoryManagerController.cs" />
@@ -299,6 +300,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\ProductImages\" />
+    <Folder Include="Views\Basket\" />
     <Folder Include="Views\ProductManagement\" />
   </ItemGroup>
   <ItemGroup>
