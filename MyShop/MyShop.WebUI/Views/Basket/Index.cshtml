@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MyShop.Core.ViewModels.BasetItemViewModel>
+
+@{
+    ViewBag.Title = "Basket";
+}
+
+<h2>Basket</h2>
+
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quanity)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            Total of your basket:
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td><img class="img-responsive" src="~/Content/ProductImages/@item.Image"/></td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quanity)
+        </td>
+
+        <td>
+            @String.Format("{0:C}", item.Price)
+        </td>
+        <td>
+            @String.Format("{0:C}", item.Price * item.Quanity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+       
+        <td>
+           
+            <a href="@Url.Action("RemoveFromBasket", "Basket", new{Id=item.Id})" class="btn btn-danger">Remove Basket</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4" style="text-align:right"><strong>Total: </strong></td>
+        <td>@String.Format("{0:C}", (from p in Model select p.Price * p.Quanity).Sum())</td>
+    </tr>
+}
+
+</table>

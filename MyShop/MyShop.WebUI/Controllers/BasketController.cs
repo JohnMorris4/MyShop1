@@ -22,5 +22,25 @@ namespace MyShop.WebUI.Controllers
             var model = basketService.GetBasketItems(this.HttpContext);
             return View(model);
         }
+
+        public ActionResult AddToBasket(string Id)
+        {
+            basketService.AddToBasket(this.HttpContext, Id);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult RemoveFromBasket(string Id)
+        {
+            basketService.RemoveFromBasket(this.HttpContext, Id);
+            return RedirectToAction("Index");
+        }
+
+        public PartialViewResult BasketSummary()
+        {
+            var basketSummary = basketService.GetBasketSummary(this.HttpContext);
+
+            return PartialView(basketSummary);
+
+        } 
     }
 }
